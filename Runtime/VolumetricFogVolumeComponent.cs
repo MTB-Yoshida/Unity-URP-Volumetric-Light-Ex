@@ -47,6 +47,8 @@ public sealed class VolumetricFogVolumeComponent : VolumeComponent, IPostProcess
 	public ClampedFloatParameter APVContributionWeight = new ClampedFloatParameter(1.0f, 0.0f, 1.0f);
 #endif
 
+	public ClampedFloatParameter shadowStrength = new ClampedFloatParameter(1f, 0f, 10f);
+
 	[Header("Main Light")]
 	[Tooltip("Disabling this will avoid computing the main light contribution to fog, which in most cases will lead to better performance.")]
 	public BoolParameter enableMainLightContribution = new BoolParameter(false, BoolParameter.DisplayType.Checkbox, true);

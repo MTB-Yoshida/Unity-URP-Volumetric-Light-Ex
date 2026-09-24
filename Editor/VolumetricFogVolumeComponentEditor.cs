@@ -22,6 +22,7 @@ public sealed class VolumetricFogVolumeComponentEditor : VolumeComponentEditor
 	private SerializedDataParameter enableAPVContribution;
 	private SerializedDataParameter APVContributionWeight;
 #endif
+	private SerializedDataParameter shadowStrength;
 
 	private SerializedDataParameter enableMainLightContribution;
 	private SerializedDataParameter anisotropy;
@@ -60,6 +61,7 @@ public sealed class VolumetricFogVolumeComponentEditor : VolumeComponentEditor
 		enableAPVContribution = Unpack(pf.Find(x => x.enableAPVContribution));
 		APVContributionWeight = Unpack(pf.Find(x => x.APVContributionWeight));
 #endif
+		shadowStrength = Unpack(pf.Find(x => x.shadowStrength));
 
 		enableMainLightContribution = Unpack(pf.Find(x => x.enableMainLightContribution));
 		anisotropy = Unpack(pf.Find(x => x.anisotropy));
@@ -108,6 +110,7 @@ public sealed class VolumetricFogVolumeComponentEditor : VolumeComponentEditor
 		if (enabledAPVContribution)
 			PropertyField(APVContributionWeight);
 #endif
+		PropertyField(shadowStrength);
 
 		PropertyField(enableMainLightContribution);
 		if (enabledMainLightContribution)

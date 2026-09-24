@@ -90,6 +90,7 @@ public sealed class VolumetricFogRenderPass : ScriptableRenderPass
 #if UNITY_2023_1_OR_NEWER
 	private static readonly int APVContributionWeigthId = Shader.PropertyToID("_APVContributionWeight");
 #endif
+	private static readonly int ShadowStrengthId = Shader.PropertyToID("_ShadowStrength");
 	private static readonly int TintId = Shader.PropertyToID("_Tint");
 	private static readonly int MaxStepsId = Shader.PropertyToID("_MaxSteps");
 
@@ -379,6 +380,7 @@ public sealed class VolumetricFogRenderPass : ScriptableRenderPass
 #if UNITY_2023_1_OR_NEWER
 		volumetricFogMaterial.SetFloat(APVContributionWeigthId, fogVolume.enableAPVContribution.value ? fogVolume.APVContributionWeight.value : 0.0f);
 #endif
+		volumetricFogMaterial.SetFloat(ShadowStrengthId, fogVolume.shadowStrength.value);
 		volumetricFogMaterial.SetColor(TintId, fogVolume.tint.value);
 		volumetricFogMaterial.SetInteger(MaxStepsId, fogVolume.maxSteps.value);
 	}

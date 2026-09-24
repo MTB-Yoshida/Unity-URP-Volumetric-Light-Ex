@@ -32,12 +32,13 @@ half VolumetricMainLightRealtimeShadow(float4 shadowCoord)
 }
 
 // Copied and modified from AdditionalLightRealtimeShadow from Shadows.hlsl. 
-half VolumetricAdditionalLightRealtimeShadow(int lightIndex, float3 positionWS, half3 lightDirection)
+half VolumetricAdditionalLightRealtimeShadow(int lightIndex, float3 positionWS, half3 lightDirection, half shadowStrength=1)
 {
 #if defined(ADDITIONAL_LIGHT_CALCULATE_SHADOWS)
     ShadowSamplingData shadowSamplingData = GetAdditionalLightShadowSamplingData(lightIndex);
 
     half4 shadowParams = GetAdditionalLightShadowParams(lightIndex);
+    shadowParams.x *= shadowStrength;
 
     int shadowSliceIndex = shadowParams.w;
     if (shadowSliceIndex < 0)

@@ -26,6 +26,7 @@ float _GroundHeight;
 float _Density;
 float _Absortion;
 float _APVContributionWeight;
+float _ShadowStrength;
 float3 _Tint;
 int _MaxSteps;
 
@@ -157,7 +158,7 @@ float3 GetStepAdditionalLightsColor(float2 uv, float3 currPosWS, float3 rd, floa
         if (_Scatterings[lightIndex] > 0.0)
         {
             Light additionalLight = GetAdditionalPerObjectLight(lightIndex, currPosWS);
-            additionalLight.shadowAttenuation = VolumetricAdditionalLightRealtimeShadow(lightIndex, currPosWS, additionalLight.direction);
+            additionalLight.shadowAttenuation = VolumetricAdditionalLightRealtimeShadow(lightIndex, currPosWS, additionalLight.direction, _ShadowStrength);
 #if _LIGHT_COOKIES
             additionalLight.color *= SampleAdditionalLightCookie(lightIndex, currPosWS);
 #endif
